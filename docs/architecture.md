@@ -63,6 +63,22 @@ scripts/data/
 
 JSON の構造は [データソース](data-sources.md#生成-json-の構造) を参照してください。グローバル IWA データを派生 JSON で作らない。JSON 変換はキーや値を保ち、実際の分母が変わる再集計をしません。
 
+## 画面（フェーズ2で実装）
+
+| パス | 内容 |
+|---|---|
+| `/` | 概要。日本の最新の仕事関連比率、最多トピック、人口当たり順位、IWA 上位5 |
+| `/activities` | 日本の IWA 四半期ランキング（検索・全件表示）、選択した活動の推移と順位。`?iwa=<ID>` で活動を指定できる |
+| `/usage` | 日本と世界の仕事関連比率の推移、トピック・Ask/Do/Express の構成、トピック別の推移 |
+| `/compare` | 日本・比較国（最大2か国）・世界の月次比較、日本と比較国の IWA 比較、日本の順位。`?c=US,KR` で国を指定できる |
+| `/about` | 出典、指標の意味、制約、ライセンス、推奨引用 |
+
+- 全ページを `@sveltejs/adapter-static` でプリレンダーし、`build/` に出力する。Cloudflare Pages ではビルドコマンド `npm run build`、出力ディレクトリ `build` を指定する。
+- ページのデータはビルド時に `src/lib/server/data.ts` が `data/processed/<release>/` から読み、必要な地域・区分（仕事関連 `work_related=1`）だけをページに埋め込む。
+- 比較国のデータは、プリレンダーした `/data/monthly/<地域>.json` と `/data/iwa/<国>.json` から、選ばれたときだけ取得する。
+- グラフは依存ライブラリを使わず、Svelte と SVG / HTML で描く（`src/lib/components/`）。
+- OGP・Twitter カードは `src/lib/components/Seo.svelte` で全ページに出力する。画像は `static/og-image.jpg`（1200×630）。OGP の画像と URL は絶対 URL が必要なため、ビルド時に環境変数 `PUBLIC_SITE_URL`（例: `https://<project>.pages.dev`）を設定する。Cloudflare Pages では「環境変数」に設定する。
+
 ## 更新と再現性
 
 - CSV の列名・値の追加や削除、期間延長、リリース更新を検知する。`data:fetch` は SHA-256 の不一致で、`data:build` はヘッダーや値の形式の変化で停止する。

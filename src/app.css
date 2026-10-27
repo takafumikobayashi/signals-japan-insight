@@ -1,0 +1,412 @@
+/* 色はデータ可視化の参照パレット（dataviz skill）に合わせる。ダークモードは同じ色相の別ステップ。 */
+/*
+ * 白黒を基調にした落ち着いた紙面。OS の設定に合わせてライト / ダークを切り替える。
+ * 系列色はデータ可視化の参照パレット（dataviz skill）を #fff / #000 の面で検証済み。
+ */
+:root {
+  color-scheme: light;
+  --page: #ffffff;
+  --surface: #ffffff;
+  --ink: #0d0d0d;
+  --ink-2: #5d5d5d;
+  --ink-muted: #6e6e6e;
+  --grid: #ececec;
+  --axis: #c9c9c9;
+  --border: rgba(0, 0, 0, 0.1);
+  --wash: rgba(0, 0, 0, 0.05);
+  --pill: #f3f3f3;
+  --pill-hover: #e8e8e8;
+  --button-bg: #0d0d0d;
+  --button-ink: #ffffff;
+  --link: #0d0d0d;
+  --focus: #2a78d6;
+  /* 系列色: 日本は常に slot 1。比較国は選択順に slot 2, 3。世界は参照用の中立色。 */
+  --series-jp: #2a78d6;
+  --series-2: #eb6834;
+  --series-3: #1baf7a;
+  --series-ref: #8f8f8f;
+  --font: system-ui, -apple-system, 'Segoe UI', 'Hiragino Sans', 'Noto Sans JP', sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:where(:not([data-theme='light'])) {
+    color-scheme: dark;
+    --page: #000000;
+    --surface: #000000;
+    --ink: #ffffff;
+    --ink-2: #a3a3a3;
+    --ink-muted: #8f8f8f;
+    --grid: #1f1f1f;
+    --axis: #3a3a3a;
+    --border: rgba(255, 255, 255, 0.12);
+    --wash: rgba(255, 255, 255, 0.07);
+    --pill: #1f1f1f;
+    --pill-hover: #2b2b2b;
+    --button-bg: #ffffff;
+    --button-ink: #0d0d0d;
+    --link: #ffffff;
+    --focus: #5598e7;
+    --series-jp: #3987e5;
+    --series-2: #d95926;
+    --series-3: #199e70;
+    --series-ref: #8f8f8f;
+  }
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --page: #000000;
+  --surface: #000000;
+  --ink: #ffffff;
+  --ink-2: #a3a3a3;
+  --ink-muted: #8f8f8f;
+  --grid: #1f1f1f;
+  --axis: #3a3a3a;
+  --border: rgba(255, 255, 255, 0.12);
+  --wash: rgba(255, 255, 255, 0.07);
+  --pill: #1f1f1f;
+  --pill-hover: #2b2b2b;
+  --button-bg: #ffffff;
+  --button-ink: #0d0d0d;
+  --link: #ffffff;
+  --focus: #5598e7;
+  --series-jp: #3987e5;
+  --series-2: #d95926;
+  --series-3: #199e70;
+  --series-ref: #8f8f8f;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--page);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 16px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--link);
+  text-decoration: underline;
+  text-decoration-color: var(--axis);
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  text-decoration-color: currentColor;
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.3;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin: 0 0 1rem;
+}
+
+h2 {
+  font-size: 1.0625rem;
+  margin: 0 0 0.125rem;
+}
+
+h3 {
+  font-size: 1rem;
+  margin: 0 0 0.125rem;
+}
+
+p {
+  margin: 0 0 0.75rem;
+}
+
+/* ページ冒頭: 中央寄せの見出しと導入文 */
+.page-head {
+  text-align: center;
+  max-width: 44rem;
+  margin: 56px auto 48px;
+}
+
+.eyebrow {
+  color: var(--ink-2);
+  font-size: 0.8125rem;
+  margin: 0 0 20px;
+}
+
+.lead {
+  color: var(--ink-2);
+  font-size: 1.0625rem;
+  max-width: 40rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.prose {
+  max-width: 40rem;
+  margin: 0 auto 40px;
+}
+
+.section-title {
+  font-size: clamp(1.375rem, 3vw, 1.75rem);
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  margin: 0 0 8px;
+}
+
+.muted {
+  color: var(--ink-2);
+  font-size: 0.875rem;
+}
+
+/* カードの枠は使わず、余白とヘアラインで区切る */
+.card {
+  padding: 0;
+  margin-bottom: 64px;
+  min-width: 0;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin: 0 0 32px;
+}
+
+/* 「国 アメリカ合衆国 ⌄」の形のピル型セレクト */
+.pill {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 36px;
+  padding: 0 34px 0 14px;
+  border-radius: 999px;
+  background: var(--pill);
+  font-size: 0.875rem;
+  color: var(--ink-2);
+  max-width: 100%;
+}
+
+.pill:hover {
+  background: var(--pill-hover);
+}
+
+.pill::after {
+  content: '';
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  width: 6px;
+  height: 6px;
+  border-right: 1.5px solid var(--ink);
+  border-bottom: 1.5px solid var(--ink);
+  transform: translateY(-70%) rotate(45deg);
+  pointer-events: none;
+}
+
+.pill select,
+.pill input {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  min-width: 0;
+  max-width: 100%;
+  padding: 0;
+  cursor: pointer;
+  /* 対応ブラウザでは選択中の値の幅に合わせる */
+  field-sizing: content;
+}
+
+.pill.search {
+  padding-right: 14px;
+}
+
+.pill.search::after {
+  display: none;
+}
+
+.pill input {
+  cursor: text;
+  width: 12rem;
+}
+
+.pill select:focus-visible,
+.pill input:focus-visible {
+  outline: none;
+}
+
+.pill:focus-within {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 40px;
+  padding: 0 18px;
+  border-radius: 999px;
+  border: 0;
+  background: var(--button-bg);
+  color: var(--button-ink);
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.button.secondary {
+  background: var(--pill);
+  color: var(--ink);
+}
+
+.button.secondary:hover {
+  background: var(--pill-hover);
+}
+
+select,
+input[type='search'],
+button {
+  font: inherit;
+  color: var(--ink);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.num {
+  font-variant-numeric: tabular-nums;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.875rem;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 8px 8px;
+  border-bottom: 1px solid var(--grid);
+  vertical-align: top;
+}
+
+th {
+  color: var(--ink-2);
+  font-weight: 500;
+}
+
+td.num,
+th.num {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.table-scroll {
+  overflow-x: auto;
+}
+
+details.table-view {
+  margin-top: 16px;
+}
+
+details.table-view summary {
+  cursor: pointer;
+  color: var(--ink-2);
+  font-size: 0.8125rem;
+}
+
+details.table-view summary:hover {
+  color: var(--ink);
+}
+
+/*
+ * グラフの登場アニメーション。reveal アクションが画面内に入った要素へ is-visible を付ける。
+ * .draw: 線を描く（pathLength="1" の path）、.grow: 棒を伸ばす、.fade: 後から現れる。
+ * 動きを減らす設定の環境と、スクリプトが動かない環境では最初から表示する。
+ */
+@media (prefers-reduced-motion: no-preference) {
+  .js .reveal .draw {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+  }
+
+  .js .reveal.is-visible .draw {
+    animation: reveal-draw 1.2s cubic-bezier(0.25, 0.7, 0.25, 1) forwards;
+  }
+
+  .js .reveal .grow {
+    transform: scaleX(0);
+    transform-origin: left center;
+  }
+
+  .js .reveal.is-visible .grow {
+    animation: reveal-grow 0.7s cubic-bezier(0.25, 0.7, 0.25, 1) forwards;
+    animation-delay: calc(var(--i, 0) * 45ms);
+  }
+
+  .js .reveal .fade {
+    opacity: 0;
+  }
+
+  .js .reveal.is-visible .fade {
+    animation: reveal-fade 0.4s ease-out forwards;
+    animation-delay: calc(var(--fade-delay, 0.9s) + var(--i, 0) * 45ms);
+  }
+}
+
+@keyframes reveal-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes reveal-grow {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes reveal-fade {
+  to {
+    opacity: 1;
+  }
+}
+
