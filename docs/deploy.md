@@ -34,7 +34,7 @@ Cloudflare Pages の GitHub 連携で公開します。`main` へのマージが
 
 - 全ページをプリレンダーした静的ファイル（`build/`）。サーバー処理はない。
 - `static/_headers`: セキュリティヘッダーと、`/_app/immutable/*` の長期キャッシュ、`/data/*` の 1 時間キャッシュ。
-- `404.html`: 存在しない URL の案内。
+- `404.html`: 存在しない URL の案内。`src/routes/404` をプリレンダーした完成済みのページで、Cloudflare Pages が存在しない URL に 404 で返す。
 - ビルドはネットワークに依存しない（`data/processed/` の生成済み JSON を使う）。
 
 ## 公開前チェックリスト
