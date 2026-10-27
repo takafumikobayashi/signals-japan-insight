@@ -1,0 +1,15 @@
+# Cloudflare Pages のレスポンスヘッダー（build/_headers として出力される）
+
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: DENY
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+
+# ファイル名にハッシュが付く資産は長期キャッシュ
+/_app/immutable/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# データ JSON はリリース更新時に差し替わるため短めにする
+/data/*
+  Cache-Control: public, max-age=3600

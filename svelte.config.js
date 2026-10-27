@@ -6,7 +6,8 @@ const config = {
   preprocess: vitePreprocess(),
   kit: {
     // Cloudflare Pages へ静的配信する。全ページとデータ JSON をビルド時に生成する。
-    adapter: adapter({ strict: true }),
+    // 存在しない URL では 404.html を返し、+error.svelte で案内する
+    adapter: adapter({ strict: true, fallback: '404.html' }),
   },
 };
 

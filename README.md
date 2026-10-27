@@ -57,9 +57,13 @@ npm run preview     # ビルド結果の確認
 - [アーキテクチャ](docs/architecture.md)
 - [ロードマップ](docs/roadmap.md)
 - [決定記録](docs/decisions.md)
+- [公開と運用](docs/deploy.md)
 - [作業時の指針](AGENTS.md)
 
 ## 出典・ライセンス
+
+- **コード**: [MIT License](LICENSE)
+- **データ**: `data/` 以下の公式データに由来するファイル（生成 JSON、IWA の英語ラベル）は OpenAI Signals の CC BY 4.0 に従います。IWA の日本語表示名は本プロジェクトによる非公式訳です。
 
 OpenAI Signals の公開データは CC BY 4.0 で提供されています。データを利用・再配布・改変する際は OpenAI Signals v3.0 を適切に帰属表示し、[ライセンス](https://creativecommons.org/licenses/by/4.0/)の条件に従います。データライセンスは OpenAI の商標利用許諾や公式認定を意味しません。
 
