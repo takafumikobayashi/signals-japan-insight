@@ -1,0 +1,16 @@
+// Cloudflare Workers（静的アセット配信）の設定。
+// ビルド結果の build/ をそのまま配信し、サーバー側の処理（Worker スクリプト）は使わない。
+{
+  // Cloudflare ダッシュボード上の Worker 名と一致させる
+  "name": "signals-japan-insight",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./build",
+    // /usage → usage.html のように、拡張子なしの URL で HTML を返す
+    "html_handling": "auto-trailing-slash",
+    // 存在しない URL には build/404.html を 404 で返す
+    "not_found_handling": "404-page"
+  },
+  // main 以外のブランチのプレビュー（npx wrangler preview）に必要。中身は空でよい
+  "previews": {}
+}

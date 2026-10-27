@@ -7,3 +7,6 @@ data/raw/
 # SvelteKit
 .svelte-kit/
 build/
+
+# wrangler dev のローカル状態
+.wrangler/

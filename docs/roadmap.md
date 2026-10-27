@@ -28,9 +28,9 @@
 
 - [x] 表示文言とグラフの軸・単位・注記をデータ辞書と照合する（Express の説明を辞書の定義に修正、順位の人口出典を追記）。
 - [x] CC BY 4.0 の帰属・出典・ライセンスを掲載する。コードは MIT（`LICENSE`）。
-- [x] Cloudflare Pages 用の設定（`.node-version`、`static/_headers`、`404.html`）と、公開・データ更新の手順を記録する（[公開と運用](deploy.md)）。
+- [x] Cloudflare 用の設定（`wrangler.jsonc`、`.node-version`、`static/_headers`、`404.html`）と、公開・データ更新の手順を記録する（[公開と運用](deploy.md)）。
 - [x] キーボード操作の構造チェック（全操作部品がフォーカス可能・ラベル付き、グラフに説明あり）。
-- [ ] Cloudflare Pages プロジェクトの作成と、独自ドメイン `signals.tariki-code.tokyo` の設定。
+- [ ] Cloudflare Workers での本番デプロイと、独自ドメイン `signals.tariki-code.tokyo` の設定。
 - [ ] 実機のスクリーンリーダー（VoiceOver など）での読み上げ確認。
 
 ## 4. 第2フェーズ: 日本の職業統計とのギャップ分析

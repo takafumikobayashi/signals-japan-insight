@@ -3,7 +3,7 @@
 ## 採用方針
 
 - **UI / アプリ**: SvelteKit + TypeScript
-- **ホスティング**: Cloudflare Pages
+- **ホスティング**: Cloudflare Workers の静的アセット配信（当初は Pages を想定。D-012）
 - **配信**: 原則静的生成・静的配信
 - **データ**: 公式 CSV を前処理し、ダッシュボードで必要な粒度の JSON を出力
 - **DB**: MVP では導入しない
@@ -23,7 +23,7 @@ flowchart LR
   A[OpenAI Signals CSV / data dictionary] --> B[前処理・スキーマ確認]
   B --> C[静的 JSON]
   C --> D[SvelteKit + TypeScript]
-  D --> E[Cloudflare Pages]
+  D --> E[Cloudflare Workers 静的アセット]
 ```
 
 ## データ前処理（フェーズ1で実装）
@@ -73,7 +73,7 @@ JSON の構造は [データソース](data-sources.md#生成-json-の構造) �
 | `/compare` | 日本・比較国（最大2か国）・世界の月次比較、日本と比較国の IWA 比較、日本の順位。`?c=US,KR` で国を指定できる |
 | `/about` | 出典、指標の意味、制約、ライセンス、推奨引用 |
 
-- 全ページを `@sveltejs/adapter-static` でプリレンダーし、`build/` に出力する。Cloudflare Pages ではビルドコマンド `npm run build`、出力ディレクトリ `build` を指定する。
+- 全ページを `@sveltejs/adapter-static` でプリレンダーし、`build/` に出力する。Cloudflare Workers が `wrangler.jsonc` の設定で `build/` をそのまま配信する（Worker スクリプトなし）。
 - ページのデータはビルド時に `src/lib/server/data.ts` が `data/processed/<release>/` から読み、必要な地域・区分（仕事関連 `work_related=1`）だけをページに埋め込む。
 - 比較国のデータは、プリレンダーした `/data/monthly/<地域>.json` と `/data/iwa/<国>.json` から、選ばれたときだけ取得する。
 - グラフは依存ライブラリを使わず、Svelte と SVG / HTML で描く（`src/lib/components/`）。
