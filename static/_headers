@@ -1,4 +1,4 @@
-# Cloudflare Pages のレスポンスヘッダー（build/_headers として出力される）
+# Cloudflare（Workers の静的アセット）のレスポンスヘッダー（build/_headers として出力される）
 
 /*
   X-Content-Type-Options: nosniff

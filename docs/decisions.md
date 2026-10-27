@@ -82,3 +82,10 @@
   - 色の定義は `src/app.css` の CSS 変数にまとめる。
   - グラフの系列色は白地・黒地の両方で色覚多様性の検証を通した値を使う。
   - グラフは画面に入ったときに、線を描く・棒を伸ばす・数値を後から表示する動きで登場させる（`src/lib/actions/reveal.ts`、`src/app.css`）。動きを減らす設定の環境と、スクリプトが動かない環境では最初から表示する。
+
+## D-012: 配信先を Cloudflare Workers の静的アセットにする
+
+- **決定**: D-006 で想定した Cloudflare Pages ではなく、Cloudflare Workers の静的アセット配信を使う。設定は `wrangler.jsonc` に置き、`build/` をそのまま配信する。Worker スクリプト（サーバー処理）は使わない。
+- **理由**: Cloudflare のダッシュボードで GitHub 連携したプロジェクトが Workers Builds として作られ、デプロイに `wrangler` を使う構成になった。静的配信・プレビュー・独自ドメインなど必要な機能は Workers でもそろう。
+- **結果**: 静的配信・DB なしの方針は変わらない。`_headers` と `404.html` はそのまま使える。公開手順は [公開と運用](deploy.md) に記録する。
+

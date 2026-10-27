@@ -1,45 +1,60 @@
 # 公開と運用
 
-Cloudflare Pages の GitHub 連携で公開します。`main` へのマージが本番公開、プルリクエストはプレビュー公開になります。
+Cloudflare Workers の静的アセット配信で公開します（D-012）。GitHub 連携（Workers Builds）により、`main` へのマージで本番、ほかのブランチへのプッシュでプレビューがデプロイされます。
 
-## Cloudflare Pages の設定
+## 設定ファイル
 
-ダッシュボードの「Workers & Pages」→「作成」→「Pages」→「Git に接続」から、`takafumikobayashi/signals-japan-insight` を選びます。
+`wrangler.jsonc` がデプロイ設定です。
+
+| 項目 | 値 | 意味 |
+|---|---|---|
+| `name` | `signals-japan-insight` | Cloudflare 上の Worker 名と一致させる |
+| `assets.directory` | `./build` | ビルド結果をそのまま配信する（Worker スクリプトなし） |
+| `assets.html_handling` | `auto-trailing-slash` | `/usage` に `usage.html` を返す |
+| `assets.not_found_handling` | `404-page` | 存在しない URL に `404.html` を 404 で返す |
+| `previews` | `{}` | プレビューデプロイ（`npx wrangler preview`）に必要 |
+
+## Cloudflare ダッシュボードの設定
+
+Worker の「設定」→「ビルド」で次のようにします。
 
 | 項目 | 値 |
 |---|---|
 | 本番ブランチ | `main` |
-| フレームワーク プリセット | SvelteKit（または「なし」） |
 | ビルドコマンド | `npm run build` |
-| ビルド出力ディレクトリ | `build` |
+| デプロイコマンド | `npx wrangler deploy` |
+| プレビューのデプロイコマンド | `npx wrangler preview` |
 | Node.js | `.node-version`（22）で指定済み |
 
-### 環境変数
-
-| 変数 | 値 | 用途 |
-|---|---|---|
-| `PUBLIC_SITE_URL` | 省略可（既定: `https://signals.tariki-code.tokyo`） | OGP の画像・URL と canonical の絶対 URL。ドメインを変えるときだけ設定する |
-
-公開 URL の既定値は `vite.config.ts` にあります。プレビュー環境でも canonical と OGP は本番ドメインを指すため、プレビュー URL が検索結果に重複して載りにくくなります。
+環境変数は不要です。公開 URL の既定値は `vite.config.ts` にあり、ドメインを変えるときだけ `PUBLIC_SITE_URL` を設定します。
 
 ### 独自ドメイン
 
 公開ドメインは `signals.tariki-code.tokyo` です。
 
-1. Pages プロジェクトの「カスタムドメイン」→「カスタムドメインを設定」で `signals.tariki-code.tokyo` を追加する。
-2. `tariki-code.tokyo` が同じ Cloudflare アカウントで管理されていれば、CNAME は自動で作られる。他社 DNS の場合は、`signals` の CNAME を `<プロジェクト名>.pages.dev` に向ける。
-3. 証明書の発行（数分）を待ち、`https://signals.tariki-code.tokyo` で表示を確認する。
+1. Worker の「設定」→「ドメインとルート」→「追加」→「カスタムドメイン」で `signals.tariki-code.tokyo` を追加する。
+2. `tariki-code.tokyo` が同じ Cloudflare アカウントで管理されていれば、DNS と証明書は自動で設定される。
+3. 数分待ち、`https://signals.tariki-code.tokyo` で表示を確認する。
 
 ## 公開物の構成
 
 - 全ページをプリレンダーした静的ファイル（`build/`）。サーバー処理はない。
 - `static/_headers`: セキュリティヘッダーと、`/_app/immutable/*` の長期キャッシュ、`/data/*` の 1 時間キャッシュ。
-- `404.html`: 存在しない URL の案内。`src/routes/404` をプリレンダーした完成済みのページで、Cloudflare Pages が存在しない URL に 404 で返す。
+- `404.html`: 存在しない URL の案内。`src/routes/404` をプリレンダーした完成済みのページ。
 - ビルドはネットワークに依存しない（`data/processed/` の生成済み JSON を使う）。
+
+## ローカルでの確認
+
+```sh
+npm run build
+npx wrangler dev        # 本番と同じ配信設定で http://localhost:8787 に表示
+npx wrangler deploy --dry-run   # 設定の検証（アップロードしない）
+```
 
 ## 公開前チェックリスト
 
 - [ ] `npm run check`、`npm test`、`npm run data:verify`、`npm run build` が通る
+- [ ] `npx wrangler dev` で各ページが 200、存在しない URL が 404 ページになる
 - [ ] 全ページの冒頭に非公式の表示があり、フッターに出典・ライセンス・取得日がある
 - [ ] グラフの指標・分母・期間の表記がデータ辞書と一致する
 - [ ] ライト / ダーク、スマホ幅（375px）で表示が崩れない
