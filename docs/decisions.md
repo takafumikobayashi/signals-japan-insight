@@ -89,3 +89,9 @@
 - **理由**: Cloudflare のダッシュボードで GitHub 連携したプロジェクトが Workers Builds として作られ、デプロイに `wrangler` を使う構成になった。静的配信・プレビュー・独自ドメインなど必要な機能は Workers でもそろう。
 - **結果**: 静的配信・DB なしの方針は変わらない。`_headers` と `404.html` はそのまま使える。公開手順は [公開と運用](deploy.md) に記録する。
 
+## D-013: 配信先を Cloudflare Pages に戻す
+
+- **決定**: D-012 の Workers をやめ、Cloudflare Pages で配信する。独自ドメイン `signals.tariki-code.tokyo` は、Netlify で管理している DNS に CNAME（`<プロジェクト名>.pages.dev`）を登録して向ける。`wrangler.jsonc` は削除する。
+- **理由**: `tariki-code.tokyo` の DNS は Netlify で管理しており、ネームサーバーを Cloudflare に移さずに CNAME で運用したい。Workers のカスタムドメインはドメインが Cloudflare の DNS にあることが前提だが、Pages は他社 DNS のサブドメインを CNAME で受け付ける。
+- **結果**: Pages は設定ファイルなしで `_headers`、`404.html`、拡張子なし URL を扱える（`npx wrangler pages dev build` で確認）。D-012 の Worker プロジェクトは、Pages での公開を確認した後に削除する。
+

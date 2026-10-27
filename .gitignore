@@ -8,5 +8,5 @@ data/raw/
 .svelte-kit/
 build/
 
-# wrangler dev のローカル状態
+# wrangler pages dev のローカル状態
 .wrangler/
