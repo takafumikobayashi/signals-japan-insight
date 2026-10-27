@@ -8,3 +8,10 @@ export function niceTicks(max: number, count = 4): number[] {
   for (let t = 0; t <= max + step * 0.999; t += step) ticks.push(Number(t.toPrecision(10)));
   return ticks;
 }
+
+/** 前後どちらにも値がない（線分にならない）点の位置。 */
+export function isolatedIndices(values: (number | null)[]): number[] {
+  return values.flatMap((v, i) =>
+    v !== null && (values[i - 1] ?? null) === null && (values[i + 1] ?? null) === null ? [i] : [],
+  );
+}

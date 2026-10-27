@@ -4,7 +4,7 @@
 
 <script lang="ts">
   import { reveal } from '$lib/actions/reveal.ts';
-  import { niceTicks } from './scale.ts';
+  import { isolatedIndices, niceTicks } from './scale.ts';
 
   let {
     periods,
@@ -150,6 +150,14 @@
           {/each}
         {/each}
       {/if}
+
+      <!-- 前後が非公開の値は線にならないため、期間数に関係なく点で示す -->
+      {#each series as s (s.id)}
+        {#each isolatedIndices(s.values) as i (i)}
+          {@const v = s.values[i] ?? 0}
+          <circle class="dot fade" cx={x(i)} cy={y(v)} r="4" style:fill={s.color} />
+        {/each}
+      {/each}
 
       {#each lastPoints as p (p.s.id)}
         {#if p.v !== null}
