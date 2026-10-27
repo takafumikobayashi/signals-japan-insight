@@ -1,0 +1,261 @@
+{
+  "project": "Signals Japan Insight（非公式・独立。OpenAI による運営・承認ではありません）",
+  "release": "v3.0",
+  "retrievedAt": "2026-10-27",
+  "csvZip": {
+    "url": "https://cdn.openai.com/signals/data-download-csv.zip",
+    "sha256": "04ab1a32e509aa75fd150f0d21c4d126305cc84018fc01a02a097088eaff6ef6"
+  },
+  "dataDictionary": {
+    "url": "https://cdn.openai.com/signals/data-dictionary.pdf",
+    "sha256": "920b7def1a6e531f767f89038e3f941716ac7764a1cac2451e20041bbcc99ba2"
+  },
+  "pages": [
+    "https://openai.com/index/chatgpt-expanding-world-of-work/",
+    "https://openai.com/signals/data/",
+    "https://openai.com/signals/data-download/"
+  ],
+  "license": {
+    "name": "CC BY 4.0",
+    "url": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  "citation": "Aaron Chatterji, Thomas Cunningham, David J. Deming, Zoe Hitzig, Drew Johnston, Alex Martin Richmond, Christopher Ong, Carl Yan Shan, and Kevin Wadman. OpenAI Signals v3.0. OpenAI, 2026. https://openai.com/signals/data-download/",
+  "attribution": "出典: OpenAI Signals v3.0（CC BY 4.0、取得日 2026-10-27）。本プロジェクトが CSV を JSON 形式に変換しました（値の再集計はしていません）。",
+  "datasets": [
+    {
+      "id": "iwa-by-country-quarter",
+      "file": "iwa-by-country-quarter.json",
+      "title": "国・四半期別 仕事関連メッセージの O*NET IWA 構成比",
+      "metric": "share_of_messages",
+      "denominator": "その国・四半期の仕事関連メッセージ",
+      "period": "quarter",
+      "periodRange": {
+        "first": "2025-01-01",
+        "last": "2026-07-01",
+        "count": 7
+      },
+      "countries": 94,
+      "hasGlobal": false,
+      "records": 93555,
+      "sumRange": {
+        "min": 0.99986,
+        "max": 1.0001,
+        "groups": 567
+      },
+      "japan": {
+        "periods": 7,
+        "first": "2025-01-01",
+        "last": "2026-07-01"
+      },
+      "sources": [
+        {
+          "file": "share_of_work_related_messages_by_onet_iwa_country_quarter.csv",
+          "scope": "country",
+          "sha256": "7db205e3d151f9b5a740ddf355a6123fb918fc1764901028065fb19196a69f84",
+          "header": [
+            "quarter",
+            "country",
+            "iwa_cleaned",
+            "share_of_messages"
+          ],
+          "rows": 93555
+        }
+      ]
+    },
+    {
+      "id": "work-share-by-month",
+      "file": "work-share-by-month.json",
+      "title": "月別 仕事関連・非仕事関連メッセージの構成比",
+      "metric": "share_of_messages",
+      "denominator": "その地域・月の全メッセージ",
+      "period": "month",
+      "periodRange": {
+        "first": "2024-07-01",
+        "last": "2026-09-01",
+        "count": 27
+      },
+      "countries": 160,
+      "hasGlobal": true,
+      "records": 8054,
+      "sumRange": {
+        "min": 1,
+        "max": 1,
+        "groups": 4027
+      },
+      "japan": {
+        "periods": 27,
+        "first": "2024-07-01",
+        "last": "2026-09-01"
+      },
+      "sources": [
+        {
+          "file": "share_of_messages_by_work_related_month.csv",
+          "scope": "global",
+          "sha256": "d89dfe693f460ac5658755fc4b602bcbffa95eb3e9d4588601e5872d8222e7b8",
+          "header": [
+            "month",
+            "work_related",
+            "share_of_messages"
+          ],
+          "rows": 54
+        },
+        {
+          "file": "share_of_messages_by_work_related_country_month.csv",
+          "scope": "country",
+          "sha256": "0d5bf45df1f50abe0b0f1b02d66fa3c8c90a64cd52de6dde3b893b80bff884b2",
+          "header": [
+            "month",
+            "country",
+            "work_related",
+            "share_of_messages"
+          ],
+          "rows": 8000
+        }
+      ]
+    },
+    {
+      "id": "work-topic-by-month",
+      "file": "work-topic-by-month.json",
+      "title": "月別 仕事関連区分ごとのトピック構成比",
+      "metric": "share_of_messages",
+      "denominator": "その地域・月・work_related 区分のメッセージ（仕事関連は work_related=1）",
+      "period": "month",
+      "periodRange": {
+        "first": "2024-07-01",
+        "last": "2026-09-01",
+        "count": 27
+      },
+      "countries": 153,
+      "hasGlobal": true,
+      "records": 50561,
+      "sumRange": {
+        "min": 0.998,
+        "max": 1.002,
+        "groups": 7223
+      },
+      "japan": {
+        "periods": 27,
+        "first": "2024-07-01",
+        "last": "2026-09-01"
+      },
+      "sources": [
+        {
+          "file": "share_of_messages_by_topic_work_related_month.csv",
+          "scope": "global",
+          "sha256": "c277ee725784c2cfa3a8ee758d687c1858bbbc0b5fe65e6650ff825496afd4f7",
+          "header": [
+            "month",
+            "work_related",
+            "topic",
+            "share_of_messages"
+          ],
+          "rows": 378
+        },
+        {
+          "file": "share_of_messages_by_topic_work_related_country_month.csv",
+          "scope": "country",
+          "sha256": "efacdbd56edd59f779733cb977c0d8e1ae94d4f8fdfbdbd0af02344eb03994b1",
+          "header": [
+            "month",
+            "country",
+            "work_related",
+            "topic",
+            "share_of_messages"
+          ],
+          "rows": 50183
+        }
+      ]
+    },
+    {
+      "id": "work-intent-by-month",
+      "file": "work-intent-by-month.json",
+      "title": "月別 仕事関連区分ごとの Ask / Do / Express 構成比",
+      "metric": "share_of_messages",
+      "denominator": "その地域・月・work_related 区分のメッセージ（仕事関連は work_related=1）",
+      "period": "month",
+      "periodRange": {
+        "first": "2024-07-01",
+        "last": "2026-09-01",
+        "count": 27
+      },
+      "countries": 151,
+      "hasGlobal": true,
+      "records": 21699,
+      "sumRange": {
+        "min": 0.999,
+        "max": 1.001,
+        "groups": 7233
+      },
+      "japan": {
+        "periods": 27,
+        "first": "2024-07-01",
+        "last": "2026-09-01"
+      },
+      "sources": [
+        {
+          "file": "share_of_messages_by_work_related_ask_do_express_month.csv",
+          "scope": "global",
+          "sha256": "3b4bc45e229e3ac55a31dcd11993e0188fb2f4c4634fd7cc2e637925536b487f",
+          "header": [
+            "month",
+            "work_related",
+            "ask_do_express",
+            "share_of_messages"
+          ],
+          "rows": 162
+        },
+        {
+          "file": "share_of_messages_by_work_related_ask_do_express_country_month.csv",
+          "scope": "country",
+          "sha256": "4c5ee4ce34a4b908907496cfd44475b599b0c06ab58d152a29b20bd4bbaccd02",
+          "header": [
+            "month",
+            "country",
+            "work_related",
+            "ask_do_express",
+            "share_of_messages"
+          ],
+          "rows": 21537
+        }
+      ]
+    },
+    {
+      "id": "country-rank-by-quarter",
+      "file": "country-rank-by-quarter.json",
+      "title": "四半期別 人口当たりメッセージ量の国別順位",
+      "metric": "rank",
+      "denominator": "順位（1 が最上位）。人口で正規化したメッセージ量に基づき、利用者数・普及率ではない",
+      "period": "quarter",
+      "periodRange": {
+        "first": "2025-01-01",
+        "last": "2026-07-01",
+        "count": 7
+      },
+      "countries": 181,
+      "hasGlobal": false,
+      "records": 1214,
+      "japan": {
+        "periods": 7,
+        "first": "2025-01-01",
+        "last": "2026-07-01"
+      },
+      "sources": [
+        {
+          "file": "share_of_messages_by_country_quarter_rank.csv",
+          "scope": "country",
+          "sha256": "01b9f896cdba646c039bf645dc4d31776bb3eb7970ac3e183bde76798aa3083f",
+          "header": [
+            "quarter",
+            "country",
+            "rank"
+          ],
+          "rows": 1214
+        }
+      ]
+    }
+  ],
+  "iwaLabels": {
+    "file": "iwa-labels.json",
+    "count": 165
+  }
+}

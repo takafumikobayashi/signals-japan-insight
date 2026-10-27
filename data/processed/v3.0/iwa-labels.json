@@ -1,0 +1,833 @@
+{
+  "release": "v3.0",
+  "labelEnSource": "OpenAI Signals v3.0 data dictionary（O*NET IWA の ID と記述）",
+  "labelJaSource": "本プロジェクトによる非公式の日本語表示名。分類の定義は英語原文に従う。",
+  "otherIwa": "Other IWA は低頻度 IWA を集約した公式カテゴリ",
+  "labels": [
+    {
+      "id": "4.A.1.a.1.I01",
+      "labelEn": "Study details of artistic productions.",
+      "labelJa": "芸術作品の詳細の研究"
+    },
+    {
+      "id": "4.A.1.a.1.I02",
+      "labelEn": "Read documents or materials to inform work processes.",
+      "labelJa": "業務に役立てるための文書・資料の読解"
+    },
+    {
+      "id": "4.A.1.a.1.I03",
+      "labelEn": "Investigate criminal or legal matters.",
+      "labelJa": "犯罪・法的事案の調査"
+    },
+    {
+      "id": "4.A.1.a.1.I04",
+      "labelEn": "Gather information from physical or electronic sources.",
+      "labelJa": "物理的・電子的な情報源からの情報収集"
+    },
+    {
+      "id": "4.A.1.a.1.I05",
+      "labelEn": "Consult legal materials or public records.",
+      "labelJa": "法令資料・公的記録の参照"
+    },
+    {
+      "id": "4.A.1.a.1.I06",
+      "labelEn": "Gather data about operational or development activities.",
+      "labelJa": "業務・開発活動に関するデータ収集"
+    },
+    {
+      "id": "4.A.1.a.1.I07",
+      "labelEn": "Obtain information about goods or services.",
+      "labelJa": "商品・サービスに関する情報の入手"
+    },
+    {
+      "id": "4.A.1.a.1.I08",
+      "labelEn": "Research issues related to earth sciences.",
+      "labelJa": "地球科学に関する問題の調査"
+    },
+    {
+      "id": "4.A.1.a.1.I09",
+      "labelEn": "Research organizational behavior, processes, or performance.",
+      "labelJa": "組織の行動・プロセス・業績の調査"
+    },
+    {
+      "id": "4.A.1.a.1.I11",
+      "labelEn": "Gather information for news stories.",
+      "labelJa": "報道記事のための情報収集"
+    },
+    {
+      "id": "4.A.1.a.1.I12",
+      "labelEn": "Collect information about patients or clients.",
+      "labelJa": "患者・顧客に関する情報収集"
+    },
+    {
+      "id": "4.A.1.a.1.I13",
+      "labelEn": "Research agricultural processes or practices.",
+      "labelJa": "農業の工程・手法の調査"
+    },
+    {
+      "id": "4.A.1.a.1.I14",
+      "labelEn": "Collect data about consumer needs or opinions.",
+      "labelJa": "消費者ニーズ・意見に関するデータ収集"
+    },
+    {
+      "id": "4.A.1.a.1.I15",
+      "labelEn": "Investigate individuals' background, behavior, or activities.",
+      "labelJa": "個人の経歴・行動・活動の調査"
+    },
+    {
+      "id": "4.A.1.a.1.I16",
+      "labelEn": "Research biological or ecological phenomena.",
+      "labelJa": "生物学的・生態学的現象の調査"
+    },
+    {
+      "id": "4.A.1.a.1.I17",
+      "labelEn": "Obtain formal documentation or authorization.",
+      "labelJa": "正式な書類・許可の取得"
+    },
+    {
+      "id": "4.A.1.a.1.I18",
+      "labelEn": "Research historical or social issues.",
+      "labelJa": "歴史的・社会的問題の調査"
+    },
+    {
+      "id": "4.A.1.a.1.I19",
+      "labelEn": "Research healthcare issues.",
+      "labelJa": "医療・保健に関する問題の調査"
+    },
+    {
+      "id": "4.A.1.a.1.I20",
+      "labelEn": "Research technology designs or applications.",
+      "labelJa": "技術の設計・応用の調査"
+    },
+    {
+      "id": "4.A.1.a.1.I21",
+      "labelEn": "Investigate incidents or accidents.",
+      "labelJa": "事件・事故の調査"
+    },
+    {
+      "id": "4.A.1.a.1.I23",
+      "labelEn": "Interview people to obtain information.",
+      "labelJa": "情報を得るための聞き取り"
+    },
+    {
+      "id": "4.A.1.a.2.I08",
+      "labelEn": "Monitor external affairs, trends, or events.",
+      "labelJa": "外部の情勢・動向・出来事の把握"
+    },
+    {
+      "id": "4.A.1.a.2.I10",
+      "labelEn": "Monitor operation of computer or information technologies.",
+      "labelJa": "コンピューター・情報技術の稼働監視"
+    },
+    {
+      "id": "4.A.1.b.1.I02",
+      "labelEn": "Identify business or organizational opportunities.",
+      "labelJa": "事業・組織の機会の特定"
+    },
+    {
+      "id": "4.A.1.b.2.I09",
+      "labelEn": "Examine people or animals to assess health conditions or physical characteristics.",
+      "labelJa": "健康状態・身体的特徴を評価するための人や動物の診察"
+    },
+    {
+      "id": "4.A.1.b.3.I01",
+      "labelEn": "Measure physical characteristics of materials, products, or equipment.",
+      "labelJa": "材料・製品・機器の物理的特性の測定"
+    },
+    {
+      "id": "4.A.1.b.3.I02",
+      "labelEn": "Estimate project development or operational costs.",
+      "labelJa": "プロジェクト開発・運営費用の見積もり"
+    },
+    {
+      "id": "4.A.1.b.3.I03",
+      "labelEn": "Calculate financial data.",
+      "labelJa": "財務データの計算"
+    },
+    {
+      "id": "4.A.2.a.1.I01",
+      "labelEn": "Assess living, work, or social needs or status of individuals or communities.",
+      "labelJa": "個人・地域社会の生活・仕事・社会的ニーズや状況の評価"
+    },
+    {
+      "id": "4.A.2.a.1.I02",
+      "labelEn": "Evaluate programs, practices, or processes.",
+      "labelJa": "プログラム・実務・プロセスの評価"
+    },
+    {
+      "id": "4.A.2.a.1.I03",
+      "labelEn": "Assess student capabilities, needs, or performance.",
+      "labelJa": "児童・生徒・学生の能力・ニーズ・成績の評価"
+    },
+    {
+      "id": "4.A.2.a.1.I04",
+      "labelEn": "Evaluate personnel capabilities or performance.",
+      "labelJa": "人員の能力・業績の評価"
+    },
+    {
+      "id": "4.A.2.a.1.I06",
+      "labelEn": "Evaluate patient or client condition or treatment options.",
+      "labelJa": "患者・顧客の状態や治療選択肢の評価"
+    },
+    {
+      "id": "4.A.2.a.1.I07",
+      "labelEn": "Evaluate the characteristics, usefulness, or performance of products or technologies.",
+      "labelJa": "製品・技術の特性・有用性・性能の評価"
+    },
+    {
+      "id": "4.A.2.a.1.I08",
+      "labelEn": "Evaluate scholarly work.",
+      "labelJa": "学術的成果の評価"
+    },
+    {
+      "id": "4.A.2.a.1.I09",
+      "labelEn": "Evaluate condition of financial assets, property, or other resources.",
+      "labelJa": "金融資産・不動産その他の資源の状態評価"
+    },
+    {
+      "id": "4.A.2.a.1.I10",
+      "labelEn": "Evaluate project feasibility.",
+      "labelJa": "プロジェクトの実現可能性の評価"
+    },
+    {
+      "id": "4.A.2.a.2.I01",
+      "labelEn": "Evaluate the quality or accuracy of data.",
+      "labelJa": "データの品質・正確性の評価"
+    },
+    {
+      "id": "4.A.2.a.2.I03",
+      "labelEn": "Compile records, documentation, or other data.",
+      "labelJa": "記録・文書その他のデータの取りまとめ"
+    },
+    {
+      "id": "4.A.2.a.2.I05",
+      "labelEn": "Verify personal information.",
+      "labelJa": "個人情報の確認"
+    },
+    {
+      "id": "4.A.2.a.3.I01",
+      "labelEn": "Examine materials or documentation for accuracy or compliance.",
+      "labelJa": "資料・文書の正確性・適合性の点検"
+    },
+    {
+      "id": "4.A.2.a.4.I01",
+      "labelEn": "Analyze environmental or geospatial data.",
+      "labelJa": "環境・地理空間データの分析"
+    },
+    {
+      "id": "4.A.2.a.4.I02",
+      "labelEn": "Analyze market or industry conditions.",
+      "labelJa": "市場・業界動向の分析"
+    },
+    {
+      "id": "4.A.2.a.4.I03",
+      "labelEn": "Analyze business or financial risks.",
+      "labelJa": "事業・財務リスクの分析"
+    },
+    {
+      "id": "4.A.2.a.4.I04",
+      "labelEn": "Analyze scientific or applied data using mathematical principles.",
+      "labelJa": "数学的手法による科学・応用データの分析"
+    },
+    {
+      "id": "4.A.2.a.4.I05",
+      "labelEn": "Evaluate designs, specifications, or other technical data.",
+      "labelJa": "設計・仕様その他の技術データの評価"
+    },
+    {
+      "id": "4.A.2.a.4.I06",
+      "labelEn": "Analyze health or medical data.",
+      "labelJa": "健康・医療データの分析"
+    },
+    {
+      "id": "4.A.2.a.4.I07",
+      "labelEn": "Analyze data to improve operations.",
+      "labelJa": "業務改善のためのデータ分析"
+    },
+    {
+      "id": "4.A.2.a.4.I08",
+      "labelEn": "Research laws, precedents, or other legal data.",
+      "labelJa": "法令・判例その他の法的データの調査"
+    },
+    {
+      "id": "4.A.2.a.4.I09",
+      "labelEn": "Assess characteristics or impacts of regulations or policies.",
+      "labelJa": "規制・政策の特徴や影響の評価"
+    },
+    {
+      "id": "4.A.2.a.4.I10",
+      "labelEn": "Analyze biological or chemical substances or related data.",
+      "labelJa": "生物・化学物質や関連データの分析"
+    },
+    {
+      "id": "4.A.2.a.4.I11",
+      "labelEn": "Analyze business or financial data.",
+      "labelJa": "事業・財務データの分析"
+    },
+    {
+      "id": "4.A.2.a.4.I12",
+      "labelEn": "Analyze performance of systems or equipment.",
+      "labelJa": "システム・機器の性能分析"
+    },
+    {
+      "id": "4.A.2.b.1.I01",
+      "labelEn": "Determine values or prices of goods or services.",
+      "labelJa": "商品・サービスの価値・価格の決定"
+    },
+    {
+      "id": "4.A.2.b.1.I02",
+      "labelEn": "Diagnose system or equipment problems.",
+      "labelJa": "システム・機器の問題の診断"
+    },
+    {
+      "id": "4.A.2.b.1.I06",
+      "labelEn": "Diagnose health conditions or disorders.",
+      "labelJa": "健康状態・疾患の診断"
+    },
+    {
+      "id": "4.A.2.b.1.I07",
+      "labelEn": "Edit written materials or documents.",
+      "labelJa": "文章・文書の編集"
+    },
+    {
+      "id": "4.A.2.b.1.I08",
+      "labelEn": "Determine resource needs of projects or operations.",
+      "labelJa": "プロジェクト・業務に必要な資源の判断"
+    },
+    {
+      "id": "4.A.2.b.1.I10",
+      "labelEn": "Select materials or equipment for operations or projects.",
+      "labelJa": "業務・プロジェクト用の資材・機器の選定"
+    },
+    {
+      "id": "4.A.2.b.1.I11",
+      "labelEn": "Alter audio or video recordings.",
+      "labelJa": "音声・映像記録の編集"
+    },
+    {
+      "id": "4.A.2.b.2.I01",
+      "labelEn": "Develop patient or client care or treatment plans.",
+      "labelJa": "患者・顧客のケア・治療計画の作成"
+    },
+    {
+      "id": "4.A.2.b.2.I02",
+      "labelEn": "Design computer or information systems or applications.",
+      "labelJa": "コンピューター・情報システムやアプリケーションの設計"
+    },
+    {
+      "id": "4.A.2.b.2.I03",
+      "labelEn": "Develop business or marketing plans.",
+      "labelJa": "事業・マーケティング計画の作成"
+    },
+    {
+      "id": "4.A.2.b.2.I04",
+      "labelEn": "Develop recipes or menus.",
+      "labelJa": "レシピ・献立の作成"
+    },
+    {
+      "id": "4.A.2.b.2.I06",
+      "labelEn": "Design databases.",
+      "labelJa": "データベースの設計"
+    },
+    {
+      "id": "4.A.2.b.2.I07",
+      "labelEn": "Develop technical specifications for products or operations.",
+      "labelJa": "製品・業務の技術仕様の策定"
+    },
+    {
+      "id": "4.A.2.b.2.I09",
+      "labelEn": "Develop financial or business plans.",
+      "labelJa": "財務・事業計画の作成"
+    },
+    {
+      "id": "4.A.2.b.2.I11",
+      "labelEn": "Design structures or facilities.",
+      "labelJa": "構造物・施設の設計"
+    },
+    {
+      "id": "4.A.2.b.2.I12",
+      "labelEn": "Develop marketing or promotional materials.",
+      "labelJa": "マーケティング・販促資料の作成"
+    },
+    {
+      "id": "4.A.2.b.2.I15",
+      "labelEn": "Develop educational programs, plans, or procedures.",
+      "labelJa": "教育プログラム・計画・手順の作成"
+    },
+    {
+      "id": "4.A.2.b.2.I18",
+      "labelEn": "Create visual designs or displays.",
+      "labelJa": "視覚的なデザイン・展示の作成"
+    },
+    {
+      "id": "4.A.2.b.2.I19",
+      "labelEn": "Develop contingency or emergency response plans.",
+      "labelJa": "緊急時・危機対応計画の策定"
+    },
+    {
+      "id": "4.A.2.b.2.I21",
+      "labelEn": "Develop models of systems, processes, or products.",
+      "labelJa": "システム・プロセス・製品のモデル開発"
+    },
+    {
+      "id": "4.A.2.b.2.I22",
+      "labelEn": "Develop news, entertainment, or artistic content.",
+      "labelJa": "報道・娯楽・芸術コンテンツの制作"
+    },
+    {
+      "id": "4.A.2.b.2.I23",
+      "labelEn": "Develop research plans or methodologies.",
+      "labelJa": "研究計画・研究方法の策定"
+    },
+    {
+      "id": "4.A.2.b.2.I25",
+      "labelEn": "Create artistic designs or performances.",
+      "labelJa": "芸術的なデザイン・パフォーマンスの創作"
+    },
+    {
+      "id": "4.A.2.b.2.I26",
+      "labelEn": "Develop scientific or mathematical theories or models.",
+      "labelJa": "科学的・数学的な理論やモデルの構築"
+    },
+    {
+      "id": "4.A.2.b.2.I27",
+      "labelEn": "Develop organizational or program goals or objectives.",
+      "labelJa": "組織・プログラムの目標設定"
+    },
+    {
+      "id": "4.A.2.b.3.I01",
+      "labelEn": "Maintain current knowledge in area of expertise.",
+      "labelJa": "専門分野の最新知識の習得"
+    },
+    {
+      "id": "4.A.2.b.4.I01",
+      "labelEn": "Develop organizational policies, systems, or processes.",
+      "labelJa": "組織の方針・制度・プロセスの策定"
+    },
+    {
+      "id": "4.A.2.b.4.I03",
+      "labelEn": "Develop operational or technical procedures or standards.",
+      "labelJa": "業務・技術上の手順や基準の策定"
+    },
+    {
+      "id": "4.A.2.b.5.I01",
+      "labelEn": "Prepare schedules for services or facilities.",
+      "labelJa": "サービス・施設のスケジュール作成"
+    },
+    {
+      "id": "4.A.2.b.5.I02",
+      "labelEn": "Schedule operational activities.",
+      "labelJa": "業務活動のスケジュール調整"
+    },
+    {
+      "id": "4.A.2.b.5.I03",
+      "labelEn": "Schedule appointments.",
+      "labelJa": "予約の設定"
+    },
+    {
+      "id": "4.A.2.b.6.I01",
+      "labelEn": "Plan events or programs.",
+      "labelJa": "イベント・プログラムの企画"
+    },
+    {
+      "id": "4.A.2.b.6.I02",
+      "labelEn": "Plan work activities.",
+      "labelJa": "作業活動の計画"
+    },
+    {
+      "id": "4.A.3.a.1.I01",
+      "labelEn": "Prepare mixtures or solutions.",
+      "labelJa": "混合物・溶液の調製"
+    },
+    {
+      "id": "4.A.3.a.1.I03",
+      "labelEn": "Clean tools, equipment, facilities, or work areas.",
+      "labelJa": "道具・設備・施設・作業場の清掃"
+    },
+    {
+      "id": "4.A.3.a.1.I08",
+      "labelEn": "Clean workpieces, finished products, or other objects.",
+      "labelJa": "加工品・完成品その他の物品の清掃"
+    },
+    {
+      "id": "4.A.3.a.1.I16",
+      "labelEn": "Perform athletic activities for fitness, competition, or artistic purposes.",
+      "labelJa": "体力づくり・競技・芸術目的の運動"
+    },
+    {
+      "id": "4.A.3.a.2.I03",
+      "labelEn": "Prepare foods or beverages.",
+      "labelJa": "飲食物の調理"
+    },
+    {
+      "id": "4.A.3.a.2.I21",
+      "labelEn": "Apply hygienic or cosmetic agents to skin or hair.",
+      "labelJa": "肌・髪への衛生用品・化粧品の使用"
+    },
+    {
+      "id": "4.A.3.a.2.I46",
+      "labelEn": "Set up equipment.",
+      "labelJa": "機器のセットアップ"
+    },
+    {
+      "id": "4.A.3.b.1.I01",
+      "labelEn": "Program computer systems or production equipment.",
+      "labelJa": "コンピューターシステム・生産設備のプログラミング"
+    },
+    {
+      "id": "4.A.3.b.1.I02",
+      "labelEn": "Implement security measures for computer or information systems.",
+      "labelJa": "コンピューター・情報システムのセキュリティ対策の実施"
+    },
+    {
+      "id": "4.A.3.b.1.I03",
+      "labelEn": "Set up computer systems, networks, or other information systems.",
+      "labelJa": "コンピューターシステム・ネットワーク等の構築"
+    },
+    {
+      "id": "4.A.3.b.1.I04",
+      "labelEn": "Resolve computer problems.",
+      "labelJa": "コンピューターの問題解決"
+    },
+    {
+      "id": "4.A.3.b.1.I05",
+      "labelEn": "Operate computer systems or computerized equipment.",
+      "labelJa": "コンピューターシステム・電子機器の操作"
+    },
+    {
+      "id": "4.A.3.b.1.I06",
+      "labelEn": "Process digital or online data.",
+      "labelJa": "デジタル・オンラインデータの処理"
+    },
+    {
+      "id": "4.A.3.b.6.I01",
+      "labelEn": "Prepare financial documents, reports, or budgets.",
+      "labelJa": "財務書類・報告書・予算の作成"
+    },
+    {
+      "id": "4.A.3.b.6.I03",
+      "labelEn": "Present research or technical information.",
+      "labelJa": "研究・技術情報の発表"
+    },
+    {
+      "id": "4.A.3.b.6.I05",
+      "labelEn": "Record images with photographic or audiovisual equipment.",
+      "labelJa": "写真・映像機器による撮影"
+    },
+    {
+      "id": "4.A.3.b.6.I06",
+      "labelEn": "Prepare health or medical documents.",
+      "labelJa": "健康・医療文書の作成"
+    },
+    {
+      "id": "4.A.3.b.6.I07",
+      "labelEn": "Prepare proposals or grant applications.",
+      "labelJa": "提案書・助成金申請書の作成"
+    },
+    {
+      "id": "4.A.3.b.6.I08",
+      "labelEn": "Maintain operational records.",
+      "labelJa": "業務記録の管理"
+    },
+    {
+      "id": "4.A.3.b.6.I09",
+      "labelEn": "Document technical designs, procedures, or activities.",
+      "labelJa": "技術設計・手順・活動の文書化"
+    },
+    {
+      "id": "4.A.3.b.6.I10",
+      "labelEn": "Maintain sales or financial records.",
+      "labelJa": "販売・財務記録の管理"
+    },
+    {
+      "id": "4.A.3.b.6.I12",
+      "labelEn": "Prepare informational or instructional materials.",
+      "labelJa": "情報提供・説明用資料の作成"
+    },
+    {
+      "id": "4.A.3.b.6.I13",
+      "labelEn": "Prepare documentation for contracts, applications, or permits.",
+      "labelJa": "契約・申請・許認可の書類作成"
+    },
+    {
+      "id": "4.A.3.b.6.I14",
+      "labelEn": "Prepare legal or regulatory documents.",
+      "labelJa": "法務・規制関連文書の作成"
+    },
+    {
+      "id": "4.A.3.b.6.I15",
+      "labelEn": "Prepare reports of operational or procedural activities.",
+      "labelJa": "業務・手続き活動の報告書作成"
+    },
+    {
+      "id": "4.A.3.b.6.I16",
+      "labelEn": "Write material for artistic or commercial purposes.",
+      "labelJa": "芸術・商業目的の文章執筆"
+    },
+    {
+      "id": "4.A.4.a.1.I01",
+      "labelEn": "Explain technical details of products or services.",
+      "labelJa": "製品・サービスの技術的詳細の説明"
+    },
+    {
+      "id": "4.A.4.a.1.I02",
+      "labelEn": "Explain regulations, policies, or procedures.",
+      "labelJa": "規則・方針・手続きの説明"
+    },
+    {
+      "id": "4.A.4.a.1.I03",
+      "labelEn": "Interpret language, cultural, or religious information for others.",
+      "labelJa": "言語・文化・宗教情報の解釈"
+    },
+    {
+      "id": "4.A.4.a.1.I04",
+      "labelEn": "Explain financial information.",
+      "labelJa": "財務情報の説明"
+    },
+    {
+      "id": "4.A.4.a.1.I05",
+      "labelEn": "Explain medical information to patients or family members.",
+      "labelJa": "患者・家族への医療情報の説明"
+    },
+    {
+      "id": "4.A.4.a.2.I01",
+      "labelEn": "Communicate environmental or sustainability information.",
+      "labelJa": "環境・持続可能性に関する情報の伝達"
+    },
+    {
+      "id": "4.A.4.a.2.I02",
+      "labelEn": "Assist scientists, scholars, or technical specialists with projects or research.",
+      "labelJa": "科学者・研究者・技術専門家のプロジェクトや研究の支援"
+    },
+    {
+      "id": "4.A.4.a.2.I03",
+      "labelEn": "Communicate with others about operational plans or activities.",
+      "labelJa": "業務計画・活動に関する連絡"
+    },
+    {
+      "id": "4.A.4.a.2.I04",
+      "labelEn": "Coordinate with others to resolve problems.",
+      "labelJa": "問題解決のための他者との調整"
+    },
+    {
+      "id": "4.A.4.a.2.I06",
+      "labelEn": "Communicate with others about business strategies.",
+      "labelJa": "事業戦略に関する連絡・協議"
+    },
+    {
+      "id": "4.A.4.a.2.I08",
+      "labelEn": "Notify others of emergencies or problems.",
+      "labelJa": "緊急事態・問題の通知"
+    },
+    {
+      "id": "4.A.4.a.2.I09",
+      "labelEn": "Communicate with others about specifications or project details.",
+      "labelJa": "仕様・プロジェクト詳細に関する連絡"
+    },
+    {
+      "id": "4.A.4.a.2.I11",
+      "labelEn": "Coordinate activities with clients, agencies, or organizations.",
+      "labelJa": "顧客・機関・組織との活動調整"
+    },
+    {
+      "id": "4.A.4.a.2.I12",
+      "labelEn": "Discuss legal matters with clients, disputants, or legal professionals or staff.",
+      "labelJa": "依頼人・紛争当事者・法律専門家との法的事項の協議"
+    },
+    {
+      "id": "4.A.4.a.2.I13",
+      "labelEn": "Confer with clients to determine needs or order specifications.",
+      "labelJa": "ニーズ・発注仕様を決めるための顧客との協議"
+    },
+    {
+      "id": "4.A.4.a.3.I02",
+      "labelEn": "Provide information or assistance to the public.",
+      "labelJa": "一般市民への情報提供・支援"
+    },
+    {
+      "id": "4.A.4.a.3.I03",
+      "labelEn": "Provide information to guests, clients, or customers.",
+      "labelJa": "来客・顧客への情報提供"
+    },
+    {
+      "id": "4.A.4.a.4.I01",
+      "labelEn": "Develop professional relationships or networks.",
+      "labelJa": "仕事上の人間関係・ネットワークの構築"
+    },
+    {
+      "id": "4.A.4.a.5.I01",
+      "labelEn": "Assist others to access additional services or resources.",
+      "labelJa": "追加サービス・資源の利用支援"
+    },
+    {
+      "id": "4.A.4.a.5.I03",
+      "labelEn": "Administer basic health care or medical treatments.",
+      "labelJa": "基本的な医療・処置の実施"
+    },
+    {
+      "id": "4.A.4.a.5.I04",
+      "labelEn": "Care for plants or animals.",
+      "labelJa": "植物・動物の世話"
+    },
+    {
+      "id": "4.A.4.a.5.I08",
+      "labelEn": "Assist individuals with paperwork.",
+      "labelJa": "個人の書類手続きの支援"
+    },
+    {
+      "id": "4.A.4.a.5.I10",
+      "labelEn": "Provide general assistance to others, such as customers, patrons, or motorists.",
+      "labelJa": "顧客・利用者などへの一般的な支援"
+    },
+    {
+      "id": "4.A.4.a.6.I01",
+      "labelEn": "Advocate for individual or community needs.",
+      "labelJa": "個人・地域社会のニーズの代弁"
+    },
+    {
+      "id": "4.A.4.a.6.I02",
+      "labelEn": "Sell products or services.",
+      "labelJa": "製品・サービスの販売"
+    },
+    {
+      "id": "4.A.4.a.6.I03",
+      "labelEn": "Promote products, services, or programs.",
+      "labelJa": "製品・サービス・プログラムの宣伝"
+    },
+    {
+      "id": "4.A.4.a.7.I01",
+      "labelEn": "Mediate disputes.",
+      "labelJa": "紛争の調停"
+    },
+    {
+      "id": "4.A.4.a.7.I02",
+      "labelEn": "Negotiate contracts or agreements.",
+      "labelJa": "契約・合意の交渉"
+    },
+    {
+      "id": "4.A.4.a.7.I03",
+      "labelEn": "Resolve personnel or operational problems.",
+      "labelJa": "人事・業務上の問題の解決"
+    },
+    {
+      "id": "4.A.4.a.8.I01",
+      "labelEn": "Present arts or entertainment performances.",
+      "labelJa": "芸術・娯楽の上演"
+    },
+    {
+      "id": "4.A.4.a.8.I02",
+      "labelEn": "Conduct amusement or gaming activities.",
+      "labelJa": "娯楽・ゲーム活動の実施"
+    },
+    {
+      "id": "4.A.4.a.8.I03",
+      "labelEn": "Respond to customer problems or inquiries.",
+      "labelJa": "顧客の問題・問い合わせへの対応"
+    },
+    {
+      "id": "4.A.4.b.3.I01",
+      "labelEn": "Teach life skills.",
+      "labelJa": "生活技能の指導"
+    },
+    {
+      "id": "4.A.4.b.3.I02",
+      "labelEn": "Teach academic or vocational subjects.",
+      "labelJa": "学術・職業科目の指導"
+    },
+    {
+      "id": "4.A.4.b.3.I04",
+      "labelEn": "Train others on operational or work procedures.",
+      "labelJa": "業務・作業手順の研修"
+    },
+    {
+      "id": "4.A.4.b.3.I05",
+      "labelEn": "Train others to use equipment or products.",
+      "labelJa": "機器・製品の使い方の研修"
+    },
+    {
+      "id": "4.A.4.b.5.I01",
+      "labelEn": "Coach others.",
+      "labelJa": "他者へのコーチング"
+    },
+    {
+      "id": "4.A.4.b.5.I02",
+      "labelEn": "Provide support or encouragement to others.",
+      "labelJa": "他者への支援・励まし"
+    },
+    {
+      "id": "4.A.4.b.6.I01",
+      "labelEn": "Advise patients or clients on medical issues.",
+      "labelJa": "患者・顧客への医療上の助言"
+    },
+    {
+      "id": "4.A.4.b.6.I02",
+      "labelEn": "Advise others on products or services.",
+      "labelJa": "製品・サービスに関する助言"
+    },
+    {
+      "id": "4.A.4.b.6.I04",
+      "labelEn": "Advise others on the design or use of technologies.",
+      "labelJa": "技術の設計・利用に関する助言"
+    },
+    {
+      "id": "4.A.4.b.6.I05",
+      "labelEn": "Advise others on business or operational matters.",
+      "labelJa": "事業・業務に関する助言"
+    },
+    {
+      "id": "4.A.4.b.6.I06",
+      "labelEn": "Advise others on healthcare or wellness issues.",
+      "labelJa": "健康・ウェルネスに関する助言"
+    },
+    {
+      "id": "4.A.4.b.6.I07",
+      "labelEn": "Advise others on educational or vocational matters.",
+      "labelJa": "教育・職業に関する助言"
+    },
+    {
+      "id": "4.A.4.b.6.I08",
+      "labelEn": "Advise others on legal or regulatory matters.",
+      "labelJa": "法務・規制に関する助言"
+    },
+    {
+      "id": "4.A.4.b.6.I10",
+      "labelEn": "Counsel others about personal matters.",
+      "labelJa": "個人的な問題に関するカウンセリング"
+    },
+    {
+      "id": "4.A.4.b.6.I11",
+      "labelEn": "Advise others on financial matters.",
+      "labelJa": "金融・財務に関する助言"
+    },
+    {
+      "id": "4.A.4.c.1.I01",
+      "labelEn": "Perform administrative or clerical activities.",
+      "labelJa": "事務・庶務作業の実施"
+    },
+    {
+      "id": "4.A.4.c.1.I03",
+      "labelEn": "Execute financial transactions.",
+      "labelJa": "金融取引の実行"
+    },
+    {
+      "id": "4.A.4.c.1.I04",
+      "labelEn": "Issue documentation.",
+      "labelJa": "書類の発行"
+    },
+    {
+      "id": "4.A.4.c.2.I01",
+      "labelEn": "Perform recruiting or hiring activities.",
+      "labelJa": "採用活動の実施"
+    },
+    {
+      "id": "4.A.4.c.3.I05",
+      "labelEn": "Purchase goods or services.",
+      "labelJa": "商品・サービスの購入"
+    },
+    {
+      "id": "Other IWA",
+      "labelEn": "Other IWA",
+      "labelJa": "その他（低頻度の IWA を集約）"
+    }
+  ]
+}

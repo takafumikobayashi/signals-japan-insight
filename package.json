@@ -1,0 +1,23 @@
+{
+  "name": "signals-japan-insight",
+  "version": "0.0.0",
+  "private": true,
+  "description": "OpenAI Signals の公開集計を日本の視点から読み解く非公式・独立のダッシュボード",
+  "type": "module",
+  "engines": {
+    "node": ">=22.18.0"
+  },
+  "scripts": {
+    "data:fetch": "node scripts/data/fetch.ts",
+    "data:build": "node scripts/data/build.ts",
+    "data:verify": "node scripts/data/verify.ts",
+    "data": "npm run data:fetch && npm run data:build && npm run data:verify",
+    "data:labels": "node scripts/data/extract-iwa-labels.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.5",
+    "fflate": "^0.8.3",
+    "typescript": "^5.9.3"
+  }
+}

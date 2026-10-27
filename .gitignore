@@ -1,0 +1,5 @@
+node_modules/
+.DS_Store
+
+# 公式 ZIP・辞書・展開した CSV は npm run data:fetch で再取得する
+data/raw/
