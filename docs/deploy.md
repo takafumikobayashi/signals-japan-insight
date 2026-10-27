@@ -1,60 +1,60 @@
 # 公開と運用
 
-Cloudflare Workers の静的アセット配信で公開します（D-012）。GitHub 連携（Workers Builds）により、`main` へのマージで本番、ほかのブランチへのプッシュでプレビューがデプロイされます。
+Cloudflare Pages の GitHub 連携で公開します（D-013）。`main` へのマージで本番、ほかのブランチへのプッシュでプレビューがデプロイされます。独自ドメインは Netlify で管理している DNS に CNAME を登録して向けます。
 
-## 設定ファイル
+## Cloudflare Pages プロジェクトの作成
 
-`wrangler.jsonc` がデプロイ設定です。
-
-| 項目 | 値 | 意味 |
-|---|---|---|
-| `name` | `signals-japan-insight` | Cloudflare 上の Worker 名と一致させる |
-| `assets.directory` | `./build` | ビルド結果をそのまま配信する（Worker スクリプトなし） |
-| `assets.html_handling` | `auto-trailing-slash` | `/usage` に `usage.html` を返す |
-| `assets.not_found_handling` | `404-page` | 存在しない URL に `404.html` を 404 で返す |
-| `previews` | `{}` | プレビューデプロイ（`npx wrangler preview`）に必要 |
-
-## Cloudflare ダッシュボードの設定
-
-Worker の「設定」→「ビルド」で次のようにします。
+ダッシュボードの「Workers & Pages」→「作成」→「Pages」タブ→「Git に接続」から、`takafumikobayashi/signals-japan-insight` を選びます。
 
 | 項目 | 値 |
 |---|---|
+| プロジェクト名 | `signals-japan-insight`（`<プロジェクト名>.pages.dev` になる） |
 | 本番ブランチ | `main` |
+| フレームワーク プリセット | なし（SvelteKit を選んだ場合も出力先は `build` に直す） |
 | ビルドコマンド | `npm run build` |
-| デプロイコマンド | `npx wrangler deploy` |
-| プレビューのデプロイコマンド | `npx wrangler preview` |
+| ビルド出力ディレクトリ | `build` |
 | Node.js | `.node-version`（22）で指定済み |
 
 環境変数は不要です。公開 URL の既定値は `vite.config.ts` にあり、ドメインを変えるときだけ `PUBLIC_SITE_URL` を設定します。
 
-### 独自ドメイン
+「Workers」タブから作るとデプロイに `wrangler` を使う Worker になり、他社 DNS の CNAME では独自ドメインを使えません（D-012、D-013）。
+
+## 独自ドメイン（Netlify DNS の CNAME）
 
 公開ドメインは `signals.tariki-code.tokyo` です。
 
-1. Worker の「設定」→「ドメインとルート」→「追加」→「カスタムドメイン」で `signals.tariki-code.tokyo` を追加する。
-2. `tariki-code.tokyo` が同じ Cloudflare アカウントで管理されていれば、DNS と証明書は自動で設定される。
-3. 数分待ち、`https://signals.tariki-code.tokyo` で表示を確認する。
+1. Pages プロジェクトの「カスタムドメイン」→「カスタムドメインを設定」で `signals.tariki-code.tokyo` を入力する。DNS が Cloudflare にないため、CNAME の登録を求める案内が表示される。
+2. Netlify の「Domains」→ `tariki-code.tokyo` →「DNS settings」→「Add new record」で次を登録する。
+
+   | 項目 | 値 |
+   |---|---|
+   | Record type | `CNAME` |
+   | Name | `signals` |
+   | Value | `<プロジェクト名>.pages.dev`（例: `signals-japan-insight.pages.dev`） |
+   | TTL | 既定値のまま |
+
+   `signals` に既存の A / CNAME レコードがあれば、先に削除する。
+3. Cloudflare 側で「確認」を押し、状態が「有効」になるまで待つ（数分〜最大で数時間）。SSL 証明書は Cloudflare が発行する。
+4. `https://signals.tariki-code.tokyo` で表示を確認する。
 
 ## 公開物の構成
 
 - 全ページをプリレンダーした静的ファイル（`build/`）。サーバー処理はない。
 - `static/_headers`: セキュリティヘッダーと、`/_app/immutable/*` の長期キャッシュ、`/data/*` の 1 時間キャッシュ。
-- `404.html`: 存在しない URL の案内。`src/routes/404` をプリレンダーした完成済みのページ。
+- `404.html`: 存在しない URL の案内。`src/routes/404` をプリレンダーした完成済みのページで、Pages が 404 で返す。
 - ビルドはネットワークに依存しない（`data/processed/` の生成済み JSON を使う）。
 
 ## ローカルでの確認
 
 ```sh
 npm run build
-npx wrangler dev        # 本番と同じ配信設定で http://localhost:8787 に表示
-npx wrangler deploy --dry-run   # 設定の検証（アップロードしない）
+npx wrangler pages dev build    # Pages と同じ配信方式で http://localhost:8788 に表示
 ```
 
 ## 公開前チェックリスト
 
 - [ ] `npm run check`、`npm test`、`npm run data:verify`、`npm run build` が通る
-- [ ] `npx wrangler dev` で各ページが 200、存在しない URL が 404 ページになる
+- [ ] `npx wrangler pages dev build` で各ページが 200、存在しない URL が 404 ページになる
 - [ ] 全ページの冒頭に非公式の表示があり、フッターに出典・ライセンス・取得日がある
 - [ ] グラフの指標・分母・期間の表記がデータ辞書と一致する
 - [ ] ライト / ダーク、スマホ幅（375px）で表示が崩れない

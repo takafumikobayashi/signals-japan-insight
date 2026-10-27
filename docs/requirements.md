@@ -47,7 +47,7 @@
 
 ## 技術・運用要件
 
-- SvelteKit、TypeScript、Cloudflare の静的配信（Workers の静的アセット。D-012）を前提とする。
+- SvelteKit、TypeScript、Cloudflare Pages を前提とする（D-013）。
 - 原則静的配信とし、公式 CSV から必要な JSON をビルド前処理する。
 - MVP では DB、ユーザー登録、サーバー側のユーザーデータ収集を設けない。
 - データ更新時は公式ソース、リリース版、取得日、期間、CSV スキーマ変更を確認してから公開する。
