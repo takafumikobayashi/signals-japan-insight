@@ -77,7 +77,7 @@ JSON の構造は [データソース](data-sources.md#生成-json-の構造) �
 - ページのデータはビルド時に `src/lib/server/data.ts` が `data/processed/<release>/` から読み、必要な地域・区分（仕事関連 `work_related=1`）だけをページに埋め込む。
 - 比較国のデータは、プリレンダーした `/data/monthly/<地域>.json` と `/data/iwa/<国>.json` から、選ばれたときだけ取得する。
 - グラフは依存ライブラリを使わず、Svelte と SVG / HTML で描く（`src/lib/components/`）。
-- OGP・Twitter カードは `src/lib/components/Seo.svelte` で全ページに出力する。画像は `static/og-image.jpg`（1200×630）。OGP の画像と URL は絶対 URL が必要なため、ビルド時に環境変数 `PUBLIC_SITE_URL`（例: `https://<project>.pages.dev`）を設定する。Cloudflare Pages では「環境変数」に設定する。
+- OGP・Twitter カードは `src/lib/components/Seo.svelte` で全ページに出力する。画像は `static/og-image.jpg`（1200×630）。OGP の画像と URL は絶対 URL が必要なため、公開ドメイン `https://signals.tariki-code.tokyo` を `vite.config.ts` の既定値とし、環境変数 `PUBLIC_SITE_URL` で上書きできるようにしている。
 
 ## 更新と再現性
 
