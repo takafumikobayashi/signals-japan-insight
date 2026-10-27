@@ -37,7 +37,17 @@ npm install
 npm run data        # 公式データの取得 → JSON 生成 → 検証
 ```
 
-生成物は `data/processed/v3.0/` にあります。取得・変換・検証の詳細は[アーキテクチャ](docs/architecture.md)を参照してください。
+生成物は `data/processed/v3.0/` にあります。
+
+## 開発
+
+```sh
+npm run dev         # 開発サーバー
+npm run check       # 型チェック（画面とデータスクリプト）
+npm test            # 単体テスト
+npm run build       # 静的サイトを build/ に出力（Cloudflare Pages 用）
+npm run preview     # ビルド結果の確認
+```取得・変換・検証の詳細は[アーキテクチャ](docs/architecture.md)を参照してください。
 
 ## ドキュメント
 

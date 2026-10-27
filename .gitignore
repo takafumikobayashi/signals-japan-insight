@@ -3,3 +3,7 @@ node_modules/
 
 # 公式 ZIP・辞書・展開した CSV は npm run data:fetch で再取得する
 data/raw/
+
+# SvelteKit
+.svelte-kit/
+build/
