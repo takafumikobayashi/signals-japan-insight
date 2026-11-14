@@ -19,7 +19,8 @@
     "data:build": "node scripts/data/build.ts",
     "data:verify": "node scripts/data/verify.ts",
     "data": "npm run data:fetch && npm run data:build && npm run data:verify",
-    "data:labels": "node scripts/data/extract-iwa-labels.ts"
+    "data:labels": "node scripts/data/extract-iwa-labels.ts",
+    "analysis:holiday": "node scripts/analysis/holiday-calendar.ts"
   },
   "devDependencies": {
     "@sveltejs/adapter-static": "^3.0.10",

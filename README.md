@@ -58,6 +58,7 @@ npm run preview     # ビルド結果の確認
 - [ロードマップ](docs/roadmap.md)
 - [決定記録](docs/decisions.md)
 - [公開と運用](docs/deploy.md)
+- [探索的分析: 日本の休暇カレンダー](docs/analysis/holiday-calendar.md)
 - [作業時の指針](AGENTS.md)
 
 ## 出典・ライセンス

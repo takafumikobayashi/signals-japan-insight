@@ -135,6 +135,20 @@ OpenAI Signals の記事は165の職務活動を O*NET の IWA として説明�
 - `layout: "value"`（順位）では、`series.JP["2026-07-01"]` が順位そのものです。
 - 公開されていない国・期間・区分はキー自体がありません。0 や補間値は入れていません。
 
+## 独自分析で使う外部データ
+
+MVP の画面とは別に、独自分析（[探索的分析: 日本の休暇カレンダー](analysis/holiday-calendar.md)）で次のデータを使います。Signals の生成 JSON には混ぜません。
+
+| データ | ファイル | 取得日・固定 | ライセンス |
+|---|---|---|---|
+| 内閣府「国民の祝日」CSV（1955〜2027年の祝日・休日） | `data/external/cao-syukujitsu.csv`（取得したまま、Shift_JIS） | 2026-11-14、SHA-256 `cec37a743c96995cdb9cb52b685c9003634682a9b0e1a640a6b9b96881fe964a` | [公共データ利用規約（第1.0版）](https://www.digital.go.jp/resources/open_data/public_data_license_v1.0)。規約 1.7.3 で CC BY 4.0 との互換性が明記されている |
+
+- 取得元: https://www8.cao.go.jp/chosei/shukujitsu/syukujitsu.csv （掲載ページ https://www8.cao.go.jp/chosei/shukujitsu/gaiyou.html ）。内閣府ホームページ利用規約（https://www.cao.go.jp/notice/rule.html ）により、権利表記のない情報には公共データ利用規約が適用される。
+- `data:fetch` は `data/raw/` を削除して作り直すため、祝日 CSV は `data/external/` に置いて git で管理する。内閣府は毎年ファイルを更新するので、再取得したらスクリプトの SHA-256 と本表の取得日を更新する。
+- 出典の記載例（規約 1.1.1・1.1.2）: 「出典: 内閣府ウェブサイト『国民の祝日について』（URL）、PDL1.0（規約 URL）（○年○月○日に利用）」。加工した場合は、加工したことと加工の主体（Signals Japan Insight）を別に記載する。
+- お盆（8月13〜16日）と年末年始（12月29日〜1月3日）の範囲は本分析の定義で、祝日 CSV には含まれない。
+- Signals の `month` は UTC 基準、祝日は JST の日付。月の境界は最初の9時間ずれる。
+
 ## ライセンスと帰属
 
 OpenAI のデータページは Signals データのライセンスを Creative Commons Attribution 4.0 International（CC BY 4.0）と明記しています。再利用時は OpenAI Signals v3.0 と出典 URL を表示し、改変した場合は変更の旨を示します。ライセンスは OpenAI の商標、公式提携、承認を許諾するものではありません。

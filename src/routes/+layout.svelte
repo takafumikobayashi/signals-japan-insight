@@ -10,10 +10,13 @@
     { href: '/activities', label: '日本の職務活動' },
     { href: '/usage', label: '日本の仕事利用' },
     { href: '/compare', label: '国際比較' },
+    { href: '/insights/calendar', label: '独自分析', match: '/insights' },
     { href: '/about', label: 'データについて' },
   ];
 
   const info = $derived(data.dataInfo);
+  // 独自分析のページは、公式値を加工した値を含む
+  const isInsight = $derived(page.url.pathname.startsWith('/insights'));
 </script>
 
 <a class="skip" href="#main">本文へ移動</a>
@@ -25,7 +28,7 @@
       <ul>
         {#each nav as item (item.href)}
           <li>
-            <a href={item.href} aria-current={page.url.pathname === item.href ? 'page' : undefined}>{item.label}</a>
+            <a href={item.href} aria-current={page.url.pathname === item.href || (item.match && page.url.pathname.startsWith(item.match)) ? 'page' : undefined}>{item.label}</a>
           </li>
         {/each}
       </ul>
@@ -46,8 +49,12 @@
     <p>
       出典:
       <a href="https://openai.com/signals/data-download/">OpenAI Signals {info.release}</a>
-      （<a href={info.license.url}>{info.license.name}</a>、取得日 {info.retrievedAt}）。 本サイトは公式 CSV を JSON
-      形式に変換して表示しており、値の再集計はしていません。
+      （<a href={info.license.url}>{info.license.name}</a>、取得日 {info.retrievedAt}）。
+      {#if isInsight}
+        このページは公式 CSV をもとに本プロジェクトが独自に計算した値と、外部データ（ページ内の出典を参照）を含みます。
+      {:else}
+        本サイトは公式 CSV を JSON 形式に変換して表示しており、値の再集計はしていません。
+      {/if}
     </p>
     <p>
       対象期間: 月次 {formatMonth(info.months[0] ?? '')}〜{formatMonth(info.months.at(-1) ?? '')}、IWA
