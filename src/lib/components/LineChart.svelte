@@ -1,5 +1,7 @@
 <script lang="ts" module>
   export type LineSeries = { id: string; label: string; color: string; values: (number | null)[] };
+  /** 期間の帯（休暇期間など）。from / to は periods の値。 */
+  export type LineBand = { from: string; to: string; label?: string };
 </script>
 
 <script lang="ts">
@@ -14,6 +16,7 @@
     format,
     ariaLabel,
     height = 240,
+    bands = [],
   }: {
     periods: string[];
     series: LineSeries[];
@@ -24,12 +27,13 @@
     format: (value: number | null) => string;
     ariaLabel: string;
     height?: number;
+    bands?: LineBand[];
   } = $props();
 
   let width = $state(640);
   let active = $state<number | null>(null);
 
-  const margin = { top: 12, bottom: 28, left: 48 };
+  const margin = $derived({ top: width >= 480 && bands.some((b) => b.label) ? 26 : 12, bottom: 28, left: 48 });
   const values = $derived(series.flatMap((s) => s.values.filter((v): v is number => v !== null)));
   const ticks = $derived(niceTicks(Math.max(0, ...values)));
   const yMax = $derived(ticks.at(-1) ?? 1);
@@ -93,6 +97,19 @@
   const drawKey = $derived(series.map((s) => `${s.id}:${s.values.join(',')}`).join('|'));
 
   const tooltipLeft = $derived(active === null ? 0 : x(active));
+
+  // 帯は各月の点を中心に、前後半月ずつ広げて塗る（描画範囲の外にははみ出さない）
+  const bandRects = $derived.by(() => {
+    const half = periods.length <= 1 ? innerWidth / 2 : innerWidth / (periods.length - 1) / 2;
+    return bands.flatMap((b) => {
+      const i0 = periods.indexOf(b.from);
+      const i1 = periods.indexOf(b.to);
+      if (i0 < 0 || i1 < 0) return [];
+      const x0 = Math.max(margin.left, x(i0) - half);
+      const x1 = Math.min(margin.left + innerWidth, x(i1) + half);
+      return [{ key: `${b.from}-${b.to}`, x: x0, w: Math.max(0, x1 - x0), label: b.label }];
+    });
+  });
 </script>
 
 <div class="line-chart" bind:clientWidth={width} use:reveal>
@@ -114,6 +131,12 @@
     {#each ticks as t (t)}
       <line class="grid" x1={margin.left} x2={margin.left + innerWidth} y1={y(t)} y2={y(t)} />
       <text class="tick" x={margin.left - 6} y={y(t)} text-anchor="end" dominant-baseline="middle">{tickLabel(t)}</text>
+    {/each}
+    {#each bandRects as b (b.key)}
+      <rect class="band" x={b.x} y={margin.top} width={b.w} height={plotHeight} />
+      {#if b.label && width >= 480}
+        <text class="band-label" x={b.x + b.w / 2} y={margin.top - 8} text-anchor="middle">{b.label}</text>
+      {/if}
     {/each}
     <line class="axis" x1={margin.left} x2={margin.left + innerWidth} y1={y(0)} y2={y(0)} />
     {#each periods as p, i (p)}
@@ -212,6 +235,15 @@
   .grid {
     stroke: var(--grid);
     stroke-width: 1;
+  }
+
+  .band {
+    fill: var(--wash);
+  }
+
+  .band-label {
+    fill: var(--ink-muted);
+    font-size: 10px;
   }
 
   .axis {

@@ -1,5 +1,7 @@
 <script lang="ts">
   import Seo from '$lib/components/Seo.svelte';
+  import InsightCard from '$lib/components/InsightCard.svelte';
+  import { INSIGHTS } from '$lib/insights.ts';
   import { formatMonth, formatQuarter, pct, pt } from '$lib/format.ts';
   import { rankIwa } from '$lib/iwa.ts';
   import { TOPICS, TOPIC_LABELS } from '$lib/labels.ts';
@@ -93,6 +95,23 @@
   <a href="/activities">全 164 分類のランキングを見る</a>
 </section>
 
+<section class="block insights" aria-labelledby="insights">
+  <h2 id="insights" class="section-title">独自分析</h2>
+  <p class="muted">公式の集計値に、本プロジェクトの計算や日本の公開データを組み合わせて読み解きます。</p>
+  <ul class="insight-grid">
+    {#each INSIGHTS as insight (insight.slug)}
+      <li>
+        <InsightCard
+          {insight}
+          spark={insight.slug === 'calendar'
+            ? { values: data.calendarSpark.values, bands: data.calendarSpark.bands, label: '日本の 18-24歳の割合（網かけ: 2〜3月・8〜9月）' }
+            : undefined}
+        />
+      </li>
+    {/each}
+  </ul>
+</section>
+
 <section class="prose block" aria-labelledby="reading">
   <h2 id="reading" class="section-title">読み方の注意</h2>
   <ul>
@@ -143,6 +162,22 @@
     margin: 8px 0 12px;
   }
 
+  .insights {
+    text-align: center;
+  }
+
+  .insight-grid {
+    list-style: none;
+    display: grid;
+    /* カードの幅を 260〜340px に保ち、枚数が少ないときは中央に寄せる。狭い画面では1列 */
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 340px));
+    justify-content: center;
+    gap: 16px;
+    margin: 24px 0 0;
+    padding: 0;
+    text-align: left;
+  }
+
   .facts {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
@@ -189,6 +224,7 @@
   .block {
     margin-bottom: 64px;
   }
+
 
   .top5 {
     list-style: none;
